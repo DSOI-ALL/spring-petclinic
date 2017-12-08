@@ -18,7 +18,7 @@
     - For the Source attribute, if you want universal access to the web application, select "Anywhere"; if you only want your IP allowed, select "My IP"; if you only want a specific IP, select "Custom" and enter the IP
   - Click "Save"
 4. Navigate to variables.tf and modify the variable "security_groups" to contain your chosen security groups from step 4.  Simply add their name to the comma-separated list.
-5. Download Java and Maven to the /usbstick/ folders:
+5. Download Java and Maven to the spring-petclinic/usbstick/ folders:
   - Download Linux x64 Java 7_75 tar.gz http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u75-oth-JPR
   - Download Maven http://mirror.nexcess.net/apache/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz
 6. Open terminal and run "terraform init" from this directory.
