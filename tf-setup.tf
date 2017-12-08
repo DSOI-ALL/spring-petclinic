@@ -8,6 +8,7 @@ resource "aws_instance" "petclinic" {
 	ami = "${var.ami}"
 	instance_type = "${var.instance_type}"
 	key_name = "spring-petclinic"
+	security_groups = "${var.security_groups}"
 
 	provisioner "remote-exec" {
 		inline = [

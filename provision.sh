@@ -34,7 +34,8 @@ else
 fi
 
 echo "Setting up server"
-mvn -f ~/petclinic/pom_provision_demo.xml tomcat7:run
+sudo nohup mvn -f ~/petclinic/pom_provision_demo.xml tomcat7:run &
+sleep 1
 
 echo "Provisioning Run Complete"
 date
