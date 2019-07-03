@@ -24,7 +24,7 @@
 		<jsp.version>2.2</jsp.version>
 		<jstl.version>1.2</jstl.version>
 		<tomcat.servlet.version>7.0.30</tomcat.servlet.version>
-		<jaxb-impl.version>2.2.7</jaxb-impl.version>
+		<jaxb-api.version>2.3.0</jaxb-api.version>
 
 		<!-- Hibernate / JPA -->
 		<hibernate.version>4.3.6.Final</hibernate.version>
@@ -75,34 +75,44 @@
 			<version>${jadira-usertype-core.version}</version>
 		</dependency>
 		<dependency>
-        	<groupId>org.apache.tomcat</groupId>
-        	<artifactId>tomcat-servlet-api</artifactId>
-         	<version>${tomcat.servlet.version}</version>
-          	<scope>provided</scope>
-        </dependency>
-		<dependency>
-                <groupId>javax.servlet.jsp</groupId>
-                <artifactId>jsp-api</artifactId>
-                <version>2.1</version>
-                <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-                <groupId>org.glassfish.web</groupId>
-                <artifactId>jstl-impl</artifactId>
-                <version>1.2</version>
-                <exclusions>
-                        <exclusion>
-                                <groupId>javax.servlet</groupId>
-                                <artifactId>servlet-api</artifactId>
-                        </exclusion>
-                </exclusions>
-        </dependency>
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>${jaxb-impl.version}</version>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-servlet-api</artifactId>
+			<version>${tomcat.servlet.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jstl-impl</artifactId>
+			<version>1.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>${jaxb-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>${jaxb-api.version}</version>
+		</dependency>
+		<!-- JAXB needs javax.activation module (jdk9) -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>javax.activation-api</artifactId>
+			<version>1.2.0</version>
 		</dependency>
 		<!-- SPRING, SPRING, SPRINGITY SPRING -->
 		<dependency>
@@ -318,7 +328,7 @@
 			<version>6.1</version>
 		</dependency> -->
 
-  </dependencies>
+	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
@@ -329,9 +339,9 @@
 				pulls both 3.2.x and 3.1.x versions of spring-core, spring-beans and spring-context
 			-->
 			<dependency>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-core</artifactId>
-					<version>${spring-framework.version}</version>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring-framework.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -365,14 +375,14 @@
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<testResources>
-		  <testResource>
-		  	<!-- declared explicitly so Spring config files can be placed next to their corresponding JUnit test class
-		  		(see example with ValidatorTests) -->
-		    <directory>${project.basedir}/src/test/java</directory>
-		  </testResource>
-		  <testResource>
-		    <directory>${project.basedir}/src/test/resources</directory>
-		  </testResource>
+			<testResource>
+				<!-- declared explicitly so Spring config files can be placed next to their corresponding JUnit test class
+                    (see example with ValidatorTests) -->
+				<directory>${project.basedir}/src/test/java</directory>
+			</testResource>
+			<testResource>
+				<directory>${project.basedir}/src/test/resources</directory>
+			</testResource>
 		</testResources>
 		<plugins>
 			<plugin>
